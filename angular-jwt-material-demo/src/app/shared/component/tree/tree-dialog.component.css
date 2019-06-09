@@ -1,0 +1,16 @@
+.example-tree-progress-bar {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  width: 50px;
+}
+
+.mat-tree-node{
+  min-height: 20px;
+}
+
+.mat-icon-button{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}

@@ -1,0 +1,14 @@
+<h4 *ngIf="error">{{ error }}</h4>
+
+<form class="example-form" (ngSubmit)="submit()">
+  <mat-form-field class="example-full-width">
+    <input name="username" matInput type="text" placeholder="用户名" [(ngModel)]="user.username" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input name="password" matInput type="password" placeholder="密码" [(ngModel)]="user.password" />
+  </mat-form-field>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" type="submit">登陆</button>
+  </div>
+</form>

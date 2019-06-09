@@ -1,0 +1,15 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input name="name" matInput type="text" placeholder="名称" [(ngModel)]="editData.name" />
+  </mat-form-field>
+
+  <div fxLayout="row" class="padding-10px" fxLayoutAlign="start center">
+    <label for="completed">完成:&nbsp;</label>
+    <mat-slide-toggle name="completed" class="example-margin" color="primary" [(ngModel)]="editData.completed" disabled="false">
+    </mat-slide-toggle>
+  </div>
+  <div class="padding-10px" >
+    <button mat-raised-button color="primary" (click)="submit()">提交</button> &nbsp;
+    <button mat-stroked-button color="primary" (click)="return()">返回</button>
+  </div>
+</form>

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <div fxLayout="row" style="width: 100%" fxFlexAlign="center">
+    <div fxFlex="90">
+      <span class="nav-link" routerLink="todos" routerLinkActive="active" *ngIf="auth.loggedIn">代办列表</span>&nbsp;
+      <span class="nav-link" routerLink="users" routerLinkActive="active" *ngIf="auth.loggedIn">用户列表</span>&nbsp;
+      <span class="nav-link" routerLink="login" routerLinkActive="active" *ngIf="!auth.loggedIn">登陆</span>&nbsp;
+    </div>
+    <div fxFlex="10">
+      <span class="nav-link" (click)="logout()" href="#" *ngIf="auth.loggedIn">登出</span>
+    </div>
+  </div>
+</mat-toolbar>
+<div style="padding: 10px;">
+  <router-outlet></router-outlet>
+</div>
