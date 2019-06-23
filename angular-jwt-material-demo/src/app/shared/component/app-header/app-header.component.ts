@@ -21,6 +21,8 @@ export class AppHeaderComponent implements OnInit {
   ];
   selectTheme;
 
+  stickyHeader$ = false;
+
   constructor(public auth: AuthService, private router: Router,
     private tokenService: TokenService,
     private themeService: ThemeService,
