@@ -1,5 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
-@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+// always include only once per project
+@include mat-core();
+
+@import 'styles-reset.scss-theme';
+@import './notifications.component.scss-theme.scss';
+
+// import our custom theme
+@import './themes/default-theme';
+@import './themes/light-theme';
+@import './themes/black-theme';
+@import './themes/nature-theme';
+
+@mixin custom-components-theme($theme) {
+  @include anms-styles-reset-theme($theme);
+  @include anms-notifications-component-theme($theme);
+}
+
+.default-theme {
+  @include angular-material-theme($anms-theme);
+  @include custom-components-theme($anms-theme);
+}
+
+.light-theme {
+  @include angular-material-theme($anms-light-theme);
+  @include custom-components-theme($anms-light-theme);
+}
+
+.black-theme {
+  @include angular-material-theme($anms-black-theme);
+  @include custom-components-theme($anms-black-theme);
+}
+
+.nature-theme {
+  @include angular-material-theme($anms-nature-theme);
+  @include custom-components-theme($anms-nature-theme);
+}
+
 
 // 清零
 body {
@@ -7,31 +45,31 @@ body {
   padding: 0px;
 }
 
-$error-color: #f55145;
-$accent-color: #00cae3;
-$warning-color: #ff9e0f;
-$success-color: #55b559;
-$font-color: #fff;
+// $error-color: #f55145;
+// $accent-color: #00cae3;
+// $warning-color: #ff9e0f;
+// $success-color: #55b559;
+// $font-color: #fff;
 
-.error-notification-overlay {
-  color: $font-color;
-  background-color: $error-color;
-}
+// .error-notification-overlay {
+//   color: $font-color;
+//   background-color: $error-color;
+// }
 
-.info-notification-overlay {
-  color: $font-color;
-  background-color: $accent-color;
-}
+// .info-notification-overlay {
+//   color: $font-color;
+//   background-color: $accent-color;
+// }
 
-.success-notification-overlay {
-  color: $font-color;
-  background-color: $success-color;
-}
+// .success-notification-overlay {
+//   color: $font-color;
+//   background-color: $success-color;
+// }
 
-.warning-notification-overlay {
-  color: $font-color;
-  background-color: $warning-color;
-}
+// .warning-notification-overlay {
+//   color: $font-color;
+//   background-color: $warning-color;
+// }
 
 // 字体
 @font-face {

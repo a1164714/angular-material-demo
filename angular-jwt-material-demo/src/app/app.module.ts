@@ -10,6 +10,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./auth.guard";
 import { AppRoutingModule } from "./app-routing.module";
+import { SimpleLayoutComponent, FullLayoutComponent } from './containers';
+import { AppHeaderComponent } from './shared/component/app-header/app-header.component';
 
 export function customTokenGetter() {
   return localStorage.getItem("access_token");
@@ -18,7 +20,10 @@ export function customTokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    FullLayoutComponent,
+    SimpleLayoutComponent,
+    AppHeaderComponent
   ],
   imports: [
     BrowserModule,

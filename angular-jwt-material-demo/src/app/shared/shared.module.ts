@@ -8,6 +8,7 @@ import { TreeDialogComponent } from "./component/tree/tree-dialog.component";
 import { AppErrorHandler } from "./error/error-handler/app-error-handler.service";
 import { HttpErrorInterceptor } from "./error/http-interceptors/http-error.interceptor";
 import { MaterialComponentsModule } from "./module/material.module";
+import { AppHeaderComponent } from './component/app-header/app-header.component';
 
 @NgModule({
   imports: [
