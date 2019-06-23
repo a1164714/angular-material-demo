@@ -6,22 +6,22 @@
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
 
-  .error {
+  .error-notification-overlay {
     color: mat-color($warn, default-contrast);
     background-color: mat-color($warn);
   }
 
-  .information {
+  .info-notification-overlay {
     color: mat-color($accent, default-contrast);
     background-color: mat-color($accent);
   }
 
-  .success {
+  .success-notification-overlay {
     color: mat-color($success-colors, default-contrast);
     background-color: mat-color($success-colors);
   }
 
-  .warning {
+  .warning-notification-overlay {
     color: mat-color($warning-colors, default-contrast);
     background-color: mat-color($warning-colors);
   }

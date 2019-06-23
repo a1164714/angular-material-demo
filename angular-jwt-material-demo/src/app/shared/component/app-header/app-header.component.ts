@@ -30,9 +30,7 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectTheme = this.themes[this.themeService.selectIndex];
-    // this.themeService.setTheme("default-theme", 0);
     this.theme$ = this.themeService.theme;
-
   }
 
   logout() {

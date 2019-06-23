@@ -35,7 +35,7 @@ export class TodoListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.list();
-        this.notification.success("修改成功");
+        this.notification.info("修改成功");
       }
     });
   }
@@ -51,7 +51,7 @@ export class TodoListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.list();
-        this.notification.success("新增成功");
+        this.notification.info("新增成功");
       }
     });
   }
@@ -70,7 +70,7 @@ export class TodoListComponent implements OnInit {
       if (result) {
         this.todos.delete(todo.id).subscribe(res => {
           if (res["flag"]) {
-            this.notification.success("删除成功");
+            this.notification.info("删除成功");
             this.list();
           }
         });
