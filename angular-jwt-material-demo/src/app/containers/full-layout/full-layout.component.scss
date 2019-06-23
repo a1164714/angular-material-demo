@@ -1,0 +1,17 @@
+$gray-200: #c2cfd6;
+
+$border-color: $gray-200 !default;
+
+.breadcrumb {
+  -webkit-transition: left 0.25s, right 0.25s, width 0.25s;
+  transition: left 0.25s, right 0.25s, width 0.25s;
+  position: relative;
+  border-bottom: 1px solid #a4b7c1;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+  background-color: #fff;
+}
+

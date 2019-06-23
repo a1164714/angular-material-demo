@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/login/auth.service';
-import { TokenService } from '../../service/token/token.service';
-import { ThemeService } from '../../service/theme/theme.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/shared/service/token/token.service';
+import { ThemeService } from 'src/app/shared/service/theme/theme.service';
 
 @Component({
   selector: 'app-header',

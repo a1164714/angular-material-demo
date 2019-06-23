@@ -11,7 +11,16 @@ import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./auth.guard";
 import { AppRoutingModule } from "./app-routing.module";
 import { SimpleLayoutComponent, FullLayoutComponent } from './containers';
-import { AppHeaderComponent } from './shared/component/app-header/app-header.component';
+// Import components
+import {
+  AppBreadcrumbsComponent,
+  AppHeaderComponent,
+} from './components';
+
+const APP_COMPONENTS = [
+  AppBreadcrumbsComponent,
+  AppHeaderComponent,
+];
 
 export function customTokenGetter() {
   return localStorage.getItem("access_token");
@@ -23,7 +32,7 @@ export function customTokenGetter() {
     LoginComponent,
     FullLayoutComponent,
     SimpleLayoutComponent,
-    AppHeaderComponent
+    ...APP_COMPONENTS
   ],
   imports: [
     BrowserModule,

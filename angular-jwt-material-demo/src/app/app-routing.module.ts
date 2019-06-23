@@ -8,8 +8,15 @@ const routes: Routes = [
   {
     path: "",
     component: FullLayoutComponent,
+    data: {
+      title: 'Home'
+    },
     children: [
-      { path: "todos", loadChildren: "./todo-list/todo-list.module#TodoListModule", canActivate: [AuthGuard] },
+      {
+        path: "todos",
+        loadChildren: "./todo-list/todo-list.module#TodoListModule",
+        canActivate: [AuthGuard]
+      },
       { path: "users", loadChildren: "./user-list/user-list.module#UserListModule", canActivate: [AuthGuard] },
       { path: "tree", loadChildren: "./tree/tree.module#TreeModule" },
     ]
