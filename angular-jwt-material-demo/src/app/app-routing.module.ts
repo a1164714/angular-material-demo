@@ -13,6 +13,11 @@ const routes: Routes = [
     },
     children: [
       {
+        path: "",
+        redirectTo: "todos",
+        pathMatch:"full"
+      },
+      {
         path: "todos",
         loadChildren: "./todo-list/todo-list.module#TodoListModule",
         canActivate: [AuthGuard]
