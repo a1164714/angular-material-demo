@@ -6,6 +6,7 @@ import { MatDialog } from "@angular/material";
 import { TodoEditComponent } from "./todo-edit/todo-edit.component";
 import { ConfirmDialogComponent } from "../shared/component/confirm-dialog/confirm-dialog.component";
 import { NotificationService } from "../shared/error/notifications/notification.service";
+import { Page } from '../shared/dto/page';
 
 @Component({
   selector: "app-todo-list",
@@ -13,13 +14,14 @@ import { NotificationService } from "../shared/error/notifications/notification.
   styleUrls: ["./todo-list.component.scss"]
 })
 export class TodoListComponent implements OnInit {
-  todo$: Observable<Todo[]>;
+  page: Page<Todo> = { list: new Array<Todo>(), totalCount: 0, pageNum: 1, pageSize: 5 };
+  todo$: Todo[] = [];
   displayedColumns: string[] = ["id", "name", "completed", "operation"];
 
   constructor(private todos: TodoService, public dialog: MatDialog, private notification: NotificationService) { }
 
   ngOnInit() {
-    this.todo$ = this.todos.list();
+    this.list();
   }
 
   /**
@@ -63,7 +65,7 @@ export class TodoListComponent implements OnInit {
   delete(todo: Todo) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       // width: "250px",
-      data: { header: "提示", content: `确认删除id为${todo.id}的代办任务吗?`}
+      data: { header: "提示", content: `确认删除id为${todo.id}的代办任务吗?` }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -82,7 +84,17 @@ export class TodoListComponent implements OnInit {
    * 获取todo列表
    */
   list() {
-    this.todo$ = this.todos.list();
+    this.todos.list(this.page.pageNum.toString(), this.page.pageSize.toString()).subscribe(res => {
+      if (res.code === "SUC000000") {
+        this.page = res.result;
+      }
+    });
+  }
+
+  changePage($event) {
+    this.page.pageNum = $event.pageIndex + 1;
+    this.page.pageSize = $event.pageSize;
+    this.list();
   }
 
 }

@@ -1,9 +1,9 @@
 <div fxLayout="row">
   <button mat-stroked-button color="primary" (click)="add()">新增</button>
 </div>
-<br>
+<br />
 <div fxLayout="row">
-  <table mat-table style="width: 100%" [dataSource]="todo$ | async">
+  <table mat-table style="width: 100%" [dataSource]="page.list">
     <!-- 用户编号隐藏 -->
     <ng-container matColumnDef="userId">
       <th mat-header-cell *matHeaderCellDef>用户编号</th>
@@ -38,4 +38,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+</div>
+<div fxLayout="row">
+  <mat-paginator (page)="changePage($event)" [length]="page.totalCount" [pageSize]="5" [pageSizeOptions]="[5, 10]"> </mat-paginator>
 </div>
