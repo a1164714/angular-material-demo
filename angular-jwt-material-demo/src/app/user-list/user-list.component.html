@@ -1,5 +1,16 @@
 <ul>
   <li *ngFor="let user of user$ | async">
-    {{user.username}}
+    {{ user.username }}
   </li>
 </ul>
+
+<ng-container *ngFor="let org of orgList">
+  <mat-checkbox class="example-margin" (change)="selectOrg($event.checked, org.id)" [ngModel]="checkSelected(org.id)">
+    {{ org.name }} &nbsp;
+  </mat-checkbox>
+</ng-container>
+<button mat-raised-button (click)="showSelectOrgList()" color="primary">显示复选的机构</button>
+&nbsp;
+<button mat-raised-button (click)="clear()">清空</button>
+&nbsp;
+<button mat-raised-button (click)="selectAll()">全选</button>
