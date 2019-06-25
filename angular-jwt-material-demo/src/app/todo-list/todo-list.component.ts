@@ -7,6 +7,7 @@ import { TodoEditComponent } from "./todo-edit/todo-edit.component";
 import { ConfirmDialogComponent } from "../shared/component/confirm-dialog/confirm-dialog.component";
 import { NotificationService } from "../shared/error/notifications/notification.service";
 import { Page } from '../shared/dto/page';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: "app-todo-list",
@@ -14,9 +15,14 @@ import { Page } from '../shared/dto/page';
   styleUrls: ["./todo-list.component.scss"]
 })
 export class TodoListComponent implements OnInit {
+  isLoadingResults = true;
+  isRateLimitReached = false;
+
+  selection: Todo; // 编辑对象
+
   page: Page<Todo> = { list: new Array<Todo>(), totalCount: 0, pageNum: 1, pageSize: 5 };
   todo$: Todo[] = [];
-  displayedColumns: string[] = ["id", "name", "completed", "operation"];
+  displayedColumns: string[] = ["select", "id", "name", "completed"];
 
   constructor(private todos: TodoService, public dialog: MatDialog, private notification: NotificationService) { }
 
@@ -84,9 +90,14 @@ export class TodoListComponent implements OnInit {
    * 获取todo列表
    */
   list() {
+    this.isLoadingResults = true;
     this.todos.list(this.page.pageNum.toString(), this.page.pageSize.toString()).subscribe(res => {
       if (res.code === "SUC000000") {
         this.page = res.result;
+        this.isLoadingResults = false;
+        if (!this.selection && this.page.list.length > 0) {
+          this.selection = this.page.list[0];
+        }
       }
     });
   }
@@ -97,4 +108,9 @@ export class TodoListComponent implements OnInit {
     this.list();
   }
 
+  changeSelection($event, row) {
+    if ($event) {
+      this.selection = row;
+    }
+  }
 }
