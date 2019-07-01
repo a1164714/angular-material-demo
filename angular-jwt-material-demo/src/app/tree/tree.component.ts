@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DynamicDatabaseImpl } from "./service/dynamic-database";
 import { MatDialog } from '@angular/material';
 import { TreeDialogComponent } from '../shared/component/tree/tree-dialog.component';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: "app-tree",
@@ -14,12 +15,16 @@ export class TreeComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
+  matDialogData;
+
+  async ngOnInit(): Promise<void> {
+    this.matDialogData = await this.database.getRoot();
   }
 
   show() {
+    console.log(this.matDialogData);
     const dialogRef = this.dialog.open(TreeDialogComponent, {
-      data: this.database
+      data: { data: this.matDialogData, database: this.database }
     });
 
     dialogRef.afterClosed().subscribe(result => {

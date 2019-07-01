@@ -5,13 +5,15 @@ import { SharedModule } from "../shared/shared.module";
 import { TreeComponent } from "./tree.component";
 
 const routes: Routes = [
-  { path: "", component: TreeComponent }
+  {
+    path: "", component: TreeComponent
+  }
 ];
 
 @NgModule({
   imports: [
     CommonModule, SharedModule, RouterModule.forChild(routes)
   ],
-  declarations: [TreeComponent]
+  declarations: [TreeComponent],
 })
 export class TreeModule { }

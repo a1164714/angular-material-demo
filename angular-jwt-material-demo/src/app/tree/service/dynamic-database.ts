@@ -11,9 +11,8 @@ export class DynamicDatabaseImpl implements DynamicDatabase {
     constructor(private http: HttpClient) {
     }
 
-    async getRoot(): Promise<DynamicFlatNode[]> {
-        const data = await this.http.get<any[]>("/api/tree/root").toPromise();
-        return data.map(item => new DynamicFlatNode(item, 0, item.isExpandable));
+    async getRoot(): Promise<any[]> {
+        return await this.http.get<any[]>("/api/tree/root").toPromise();
     }
 
     async  getChild(id: string): Promise<any[]> {
