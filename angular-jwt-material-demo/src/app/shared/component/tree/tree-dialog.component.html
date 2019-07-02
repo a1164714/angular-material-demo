@@ -2,20 +2,37 @@
   <h1 mat-dialog-title>树型选择器</h1>
   <div mat-dialog-content style="height: 300px;width: 400px;z-index: 80;">
     <mat-tree #tree [dataSource]="dataSource" [treeControl]="treeControl">
-      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-        <mat-radio-button [value]="node.item" (change)="change($event)"></mat-radio-button>
+      <mat-tree-node
+        [ngClass]="{ 'tree-node-selected': selectData.item.id === node.item.id }"
+        class="tree-node"
+        (click)="selectNode(node)"
+        [matTreeNodePaddingIndent]="30"
+        *matTreeNodeDef="let node"
+        matTreeNodePadding
+      >
         <button mat-icon-button disabled></button>
-        {{ node.item.name }}
+        <mat-icon>description</mat-icon>
+        &nbsp;{{ node.item.name }}
       </mat-tree-node>
-      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-        <mat-radio-button [value]="node.item" (change)="change($event)"></mat-radio-button>
+      <mat-tree-node
+        [ngClass]="{ 'tree-node-selected': selectData.item.id === node.item.id }"
+        class="tree-node"
+        (click)="selectNode(node)"
+        [matTreeNodePaddingIndent]="30"
+        style="padding-left: 30px;"
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+      >
         <button mat-icon-button [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle [matTreeNodeToggleRecursive]="false">
           <mat-icon class="mat-icon-rtl-mirror">
             {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
           </mat-icon>
-          {{ node.item.name }}
           <mat-progress-bar *ngIf="node.isLoading" mode="indeterminate" class="example-tree-progress-bar"></mat-progress-bar>
         </button>
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ treeControl.isExpanded(node) ? "folder_open" : "folder" }}
+        </mat-icon>
+        &nbsp; {{ node.item.name }}
         <ul [hidden]="!treeControl.isExpanded(node)">
           <ng-container matTreeNodeOutlet></ng-container>
         </ul>

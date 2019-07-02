@@ -5,8 +5,6 @@ import { NotificationService } from "../../error/notifications/notification.serv
 import { DynamicDatabase } from "./class/dynamic-database.inteface";
 import { DynamicDataSource } from "./class/dynamic-datasource";
 import { DynamicFlatNode } from "./class/dynamic-flat-node";
-import { CustomTreeControl } from './class/custom-tree-control';
-import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: "app-dialog-tree",
@@ -19,7 +17,7 @@ export class TreeDialogComponent implements OnInit {
 
   selectData;
 
-  treeControl: CustomTreeControl<DynamicFlatNode> = new CustomTreeControl<DynamicFlatNode>(
+  treeControl: FlatTreeControl<DynamicFlatNode> = new FlatTreeControl<DynamicFlatNode>(
     (node: DynamicFlatNode) => node.level,
     (node: DynamicFlatNode) => node.expandable
   );
@@ -33,13 +31,25 @@ export class TreeDialogComponent implements OnInit {
     private notification: NotificationService
   ) {
     this.database = matDialogData.database;
-    
     this.dataSource = new DynamicDataSource(this.treeControl, this.database);
   }
 
   async ngOnInit() {
     this.dataSource.data = this.matDialogData.data;
-    this.dataSource.data.forEach(data=>this.treeControl.expandParents(data));
+    if (this.dataSource.data.length > 0) {
+      this.selectData = this.dataSource.data[0];
+    }
+    for (let i = 0; i < this.dataSource.data.length - 1; i++) {
+      const node = this.dataSource.data[i];
+      const next = this.dataSource.data[i + 1];
+      if (node.level < next.level) {
+        this.treeControl.expand(node);
+      }
+    }
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   /**
@@ -71,4 +81,7 @@ export class TreeDialogComponent implements OnInit {
 
   hasChild = (_: number, _nodeData: DynamicFlatNode) => _nodeData.item.hasChild;
 
+  selectNode(node) {
+    this.selectData = node;
+  }
 }

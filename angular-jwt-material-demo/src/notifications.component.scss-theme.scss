@@ -1,6 +1,6 @@
-@import '../node_modules/@angular/material/theming';
+@import "../node_modules/@angular/material/theming";
 
-@import './styles-variables';
+@import "./styles-variables";
 
 @mixin anms-notifications-component-theme($theme) {
   $accent: map-get($theme, accent);
@@ -24,5 +24,35 @@
   .warning-notification-overlay {
     color: mat-color($warning-colors, default-contrast);
     background-color: mat-color($warning-colors);
+  }
+
+  .tree-node-selected {
+    background-color: mat-color($accent, 400, 0.5);
+  }
+
+  .tree-node:hover {
+    background-color: mat-color($accent, 400, 0.5);
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+    margin-right: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 2px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: mat-color($accent, 400, 0.8);
+    border-radius: 2px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    // background: #b30000;
   }
 }
