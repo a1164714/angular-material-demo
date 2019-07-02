@@ -15,16 +15,14 @@ export class TreeComponent implements OnInit {
 
   }
 
-  matDialogData;
-
   async ngOnInit(): Promise<void> {
-    this.matDialogData = await this.database.getRoot();
+   
   }
 
-  show() {
-    console.log(this.matDialogData);
+  async show() {
+    let matDialogData = await this.database.getRoot();
     const dialogRef = this.dialog.open(TreeDialogComponent, {
-      data: { data: this.matDialogData, database: this.database }
+      data: { data: matDialogData, database: this.database }
     });
 
     dialogRef.afterClosed().subscribe(result => {

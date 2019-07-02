@@ -11,7 +11,9 @@
         matTreeNodePadding
       >
         <button mat-icon-button disabled></button>
-        <mat-icon>description</mat-icon>
+        <i class="material-icons">
+          description
+        </i>
         &nbsp;{{ node.item.name }}
       </mat-tree-node>
       <mat-tree-node
@@ -24,14 +26,14 @@
         matTreeNodePadding
       >
         <button mat-icon-button [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle [matTreeNodeToggleRecursive]="false">
-          <mat-icon class="mat-icon-rtl-mirror">
+          <i class="material-icons">
             {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
-          </mat-icon>
+          </i>
           <mat-progress-bar *ngIf="node.isLoading" mode="indeterminate" class="example-tree-progress-bar"></mat-progress-bar>
         </button>
-        <mat-icon class="mat-icon-rtl-mirror">
+        <i class="material-icons at-icon-rtl-mirror">
           {{ treeControl.isExpanded(node) ? "folder_open" : "folder" }}
-        </mat-icon>
+        </i>
         &nbsp; {{ node.item.name }}
         <ul [hidden]="!treeControl.isExpanded(node)">
           <ng-container matTreeNodeOutlet></ng-container>

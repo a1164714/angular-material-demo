@@ -59,7 +59,9 @@ export class TodoListComponent implements OnInit {
    */
   add() {
     const dialogRef = this.dialog.open(TodoEditComponent, {
-      width: "250px"
+      width: "250px",
+      height: "280px",
+      // panelClass: 'epsSelectorPanel'
     });
 
     dialogRef.afterClosed().subscribe(result => {

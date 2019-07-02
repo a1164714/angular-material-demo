@@ -46,7 +46,12 @@ export class AppHeaderComponent implements OnInit {
       const themeVal = $event.source.value;
       this.themeService.setTheme(themeVal, i);
       const classList = this.overlayContainer.getContainerElement().classList;
-      this.overlayContainer.getContainerElement().classList.replace(classList[classList.length - 1], themeVal);
+      if (classList.replace) {
+        this.overlayContainer.getContainerElement().classList.replace(classList[classList.length - 1], themeVal);
+      } else {
+        console.log(this.overlayContainer.getContainerElement());
+        this.overlayContainer.getContainerElement().className = "cdk-overlay-container " + themeVal;
+      }
     }
   }
 }
