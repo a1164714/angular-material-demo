@@ -16,6 +16,7 @@ import {
   AppBreadcrumbsComponent,
   AppHeaderComponent,
 } from './components';
+import { StrTrimDirective } from './shared/directive/str-trim.directive';
 
 const APP_COMPONENTS = [
   AppBreadcrumbsComponent,

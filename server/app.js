@@ -46,7 +46,10 @@ var ROOT_NODE = [
     { item: { id: "10", name: "Yellow", hasChild: false }, level: 2 },
     { item: { id: "11", name: "White", hasChild: false }, level: 2 },
     { item: { id: "12", name: "Black", hasChild: false }, level: 2 },
-    { item: { id: "7", name: "Potato", hasChild: false }, level: 1 }
+    { item: { id: "7", name: "Potato", hasChild: true }, level: 1 },
+    { item: { id: "13", name: "Yellow", hasChild: false }, level: 2 },
+    { item: { id: "14", name: "White", hasChild: false }, level: 2 },
+    { item: { id: "15", name: "Black", hasChild: false }, level: 2 },
 ];
 
 function getTodos(userID) {

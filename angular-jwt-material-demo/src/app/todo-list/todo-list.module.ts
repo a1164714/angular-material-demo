@@ -5,6 +5,7 @@ import { TodoEditComponent } from "./todo-edit/todo-edit.component";
 import { TodoListComponent } from "./todo-list.component";
 import { MatPaginatorIntl } from '@angular/material';
 import { MatPaginatorIntlCustom } from '../shared/custom/mat-pageinator-intl-custom';
+import { StrTrimDirective } from '../shared/directive/str-trim.directive';
 
 
 const routes: Routes = [

@@ -9,6 +9,7 @@ import { AppErrorHandler } from "./error/error-handler/app-error-handler.service
 import { HttpErrorInterceptor } from "./error/http-interceptors/http-error.interceptor";
 import { MaterialComponentsModule } from "./module/material.module";
 import { AppHeaderComponent } from './component/app-header/app-header.component';
+import { StrTrimDirective } from './directive/str-trim.directive';
 
 @NgModule({
   imports: [
@@ -21,10 +22,11 @@ import { AppHeaderComponent } from './component/app-header/app-header.component'
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+    StrTrimDirective
   ],
   entryComponents: [ConfirmDialogComponent, TreeDialogComponent],
-  declarations: [ConfirmDialogComponent, TreeDialogComponent],
+  declarations: [ConfirmDialogComponent, TreeDialogComponent,StrTrimDirective],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
